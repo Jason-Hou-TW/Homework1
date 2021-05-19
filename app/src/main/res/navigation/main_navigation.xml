@@ -3,15 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/welcome">
+    app:startDestination="@id/Fragment_show">
 
     <activity
         android:id="@+id/welcome"
         android:name="com.example.homework1.Welcome"
-        android:label="Welcome" />
+        android:label="Welcome"
+        tools:layout="@layout/welcome"/>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.homework1.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/Fragment_detail"
+        android:name="com.example.homework1.Fragment_detail"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/Fragment_show"
+        android:name="com.example.homework1.Fragment_show"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_show" >
+        <action
+            android:id="@+id/action_Fragment_show_to_Fragment_detail"
+            app:destination="@id/Fragment_detail"
+            app:popUpTo="@id/Fragment_detail" />
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue="Ina!" />
+    </fragment><!--這裡很重要 不然沒有layout-->
 </navigation>
